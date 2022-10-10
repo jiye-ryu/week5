@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>당신의 머릿속</title>
+</head>
+	<style type="text/css">
+		body,p,h1{margin: 0; padding: 0;}
+		nav {height: 40px; background-color: black; color: white; border: 1px; border-color: black; border-style: solid; border-left: none; border-right: none; position: sticky; top: 0px; left: 0px; z-index: 10000;}
+		#pass-container{display: flex; flex: 0 0 auto; white-space: nowrap; overflow: hidden; transition: 1s; font-size: 20px; margin-top: 8px;  font-family: 'Pretendard'; font-weight: 400;}
+		.pass{animation: shift 3s linear infinite; padding-right: 50px;}
+
+		header{height: 960px; overflow: hidden;}
+		section{height: 960px; overflow: hidden;}
+		#bg{background: linear-gradient(-45deg, blue, lightblue, #fff587, palegreen); background-size: 400% 400%; animation: color 15s ease infinite;}
+		@keyframes color{
+			0%{background-position: 0 50%;}
+			50%{background-position: 100% 50%;}
+			100%{background-position: 0 50%;}
+		}
+		#title{padding: 100px 0px; font-size: 5rem; font-family: 'Pretendard'; font-weight: 600;}
+		#contentsText{padding-bottom: 10px; padding-left: 10px; font-size: 2rem; height: 100px; font-family: 'Pretendard'; font-weight: 400; line-height: 1.4;}
+		#intro{width: 1200px; margin: auto; z-index: 10; padding-top: 100px;}
+		.row{width: 1200px; height: 960px; margin: auto; z-index: 9; background-image: url(brain2.png); background-size: cover; }
+		#result{font-family: 'Pretendard'; font-weight: 900; z-index: 9; position: relative; top: 470px; left: 0px; text-align: center; font-size: 4rem; opacity: 0; width: 800px; margin: 0px 200px; transform: translate(0,-50%);}
+		@keyframes shift{
+			from{transform: translateX(-100%);}
+			to{transform: translateX(0%);}
+		}
+		#a1,#a2,#a3,#a4,#a5{background: none; color: navy; width: 800px; height: 35px; font-size: 24px; vertical-align: top; display: inline-block; border-style: none;  border-bottom: solid; border-color: black; padding-top: 20px; font-family: 'Pretendard'; font-weight: 400; border-radius: 0%;}
+		#boxContainer{padding-left: 10px; width: 900px;}
+		#but {border-style: none; color: lightyellow; background-color: black;  width:200px; height: 200px; border-radius: 50%; background-size: cover; text-align: center; position: relative; top: -210px; left: 930px; animation: spin 4s cubic-bezier(.3,.03,.34,1) infinite; font-size: 70px; padding-bottom: 15px;}
+		#but:hover{border-style: none; color: lightyellow; background-color: black;  width:200px; height: 200px; border-radius: 50%; background-size: cover; text-align: center; position: relative; top: -210px; left: 930px; animation: spin 1s linear infinite; font-size: 70px; padding-bottom: 15px;}
+		button {font-family: 'Pretendard'; font-weight: 100;}
+		@keyframes spin{
+			0%{transform: rotateY(0deg);}
+			100%{transform: rotateY(360deg);}
+		}
+		#stickerid{width: 200px; height: 100px; background-color: blue; position: absolute; z-index: 100; overflow: hidden; transform: translate(-50%,-50%);}
+
+		#hidden{width: 100vw; height: 1000px; position: absolute; margin: 0; padding: 0; top: 0; left: 0; z-index: 10000; overflow: hidden; display: none;}
+	</style>
+<body>
+	<nav>
+		<div id="pass-container">
+			<div class="pass" id="pass"></div>
+			<div class="pass" id="pass2"></div>
+			<div class="pass" id="pass3"></div>
+			<div class="pass" id="pass4"></div>
+			<div class="pass" id="pass5"></div>
+		</div>
+	</nav>
+	<div id="hidden"></div>
+	<header>
+		<section id="bg">
+			<div id="intro">
+				<div id="title"></div>
+				<div id="contentsText"></div>
+				<div id="boxContainer">
+					<input type="text" id="a1" value="줄마다">
+					<input type="text" id="a2" value="하나씩">
+					<input type="text" id="a3" value="내용을">
+					<input type="text" id="a4" value="채워">
+					<input type="text" id="a5" value="주세요.">
+				</div>
+				<button id="but">go</button>
+			</div>
+			<div class="row">
+				<div id="result"></div>
+			</div>
+			<audio src="sound.mp3" id="bgSnd"></audio>
+			<audio src="sound.m4a" id="stkrSnd"></audio>
+		</section>
+	</header>
+	<script type="text/javascript">
+		//상단바 디자인
+		function getTime(){	
+			let d = new Date();
+			let year = d.getFullYear();
+			let month = d.getMonth()+1;
+			let day = d.getDate();
+			let hour = d.getHours();
+			let minutes = d.getMinutes();
+			let seconds = d.getSeconds();
+
+			document.getElementById("pass").innerHTML = " 지금도 시간은 흐른다 " + year + "년 " + month + "월 " + day + "일 " + hour + "시 " + minutes + "분 " + seconds + "초 ";
+			document.getElementById("pass2").innerHTML = "지금도 시간은 흐른다 " + year + "년 " + month + "월 " + day + "일 " + hour + "시 " + minutes + "분 " + seconds + "초 ";
+			document.getElementById("pass3").innerHTML = "지금도 시간은 흐른다 " + year + "년 " + month + "월 " + day + "일 " + hour + "시 " + minutes + "분 " + seconds + "초 ";
+			document.getElementById("pass4").innerHTML = "지금도 시간은 흐른다 " + year + "년 " + month + "월 " + day + "일 " + hour + "시 " + minutes + "분 " + seconds + "초 ";
+			document.getElementById("pass5").innerHTML = "지금도 시간은 흐른다 " + year + "년 " + month + "월 " + day + "일 " + hour + "시 " + minutes + "분 " + seconds + "초 ";
+		}
+	
+		let go = setInterval(getTime,500);
+
+		//인트로 디자인
+		let name = prompt("이름을 알려주세요.","이름");
+
+		if (name != null){
+			document.getElementById("title").innerHTML = name + "님, 반갑습니다!";
+		}
+		var contents = "   바쁜 하루를 잘 보내고 계신가요? <br> 지금 당신의 머릿속에 떠오른 해야할 일 5가지를 아래의 칸에 입력해주세요."
+		var contentsArr = contents.split(" ");
+		var s = 0;
+		var contentsTimer = setInterval(print,200);
+
+		function print(){
+			var t = document.createElement("span");
+			t.innerHTML = contentsArr[s] + " ";
+			t.className = "word";
+			s++
+			contentsText.appendChild(t);
+			if(s == contentsArr.length){
+				clearInterval(contentsTimer);
+			}
+
+		}
+
+		but.onclick = function(){
+			let intro = document.getElementById("intro")
+				intro.style.display = "none";
+				myTimer2 = setInterval(makeSticker,500);
+				bgSnd.play();
+			let visible = document.getElementById("result")
+				visible.style.opacity = "1";
+			let hidden = document.getElementById("hidden")
+				hidden.style.display = "block";
+		}
+
+		//랜덤 텍스트
+		function makeText(){
+			var aa = document.getElementById("a1").value;
+			var bb = document.getElementById("a2").value;
+			var cc = document.getElementById("a3").value;
+			var dd = document.getElementById("a4").value;
+			var ee = document.getElementById("a5").value;
+			var text = [aa, bb, cc, dd, ee];
+			let sum = text[Math.floor(Math.random()*text.length)];
+			document.getElementById("result").innerHTML = sum;
+		}
+
+
+		let myTimer = setInterval(makeText,1000);
+
+		//랜덤 딴생각 스티커 만들기
+		let score = 0;
+		let images = ["0.png", "1.png", "2.png", "3.png", "4.png", "5.png"];
+
+		function sticker(){
+			var stkr = document.createElement("div");
+			stkr.id = "stickerid";
+			let maxW = window.innerWidth - 30
+			let maxH = window.innerHeight - 30
+			let w = Math.random()*(maxW - 30) + 30;
+			let h = Math.random()*(maxH - 30) + 30;
+			stkr.style.left = w + "px";
+			stkr.style.top = h + "px";
+			stkr.style.width = t*20 + "px";
+			stkr.style.height = t*10 + "px";
+			var chosenImage = images[Math.floor(Math.random()*images.length)];
+			stkr.style.background = "url(" + chosenImage +")";
+			stkr.style.backgroundSize = "cover";
+			hidden.appendChild(stkr);
+			score++;
+
+			stkr.onclick = function(){
+				stkrSnd.play();
+				this.remove();
+				score--;
+				console.log(score + "개 남았습니다.");
+				
+				//딴생각을 모두 없앴을 경우
+				if (score == 0){
+					alert("오늘 하루도 화이팅!");
+				}
+			}
+		}
+
+		let myTimer2; 
+		let t = 0;
+		
+		function makeSticker(){
+			t++;
+			sticker();
+			if (score == 25){
+				clearInterval(myTimer2);
+				bgSnd.pause();
+				alert("이런, 잡념 좀 비우셔야겠네요!");
+			}
+		}
+	</script>
+</body>
+</html>
