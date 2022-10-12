@@ -31,6 +31,7 @@
 		}
 		#a1,#a2,#a3,#a4,#a5{background: none; color: navy; width: 800px; height: 35px; font-size: 24px; vertical-align: top; display: inline-block; border-style: none;  border-bottom: solid; border-color: black; padding-top: 20px; font-family: 'Pretendard'; font-weight: 400; border-radius: 0%;}
 		#boxContainer{padding-left: 10px; width: 900px;}
+		input::placeholder{color:navy;}
 		#but {border-style: none; color: lightyellow; background-color: black;  width:200px; height: 200px; border-radius: 50%; background-size: cover; text-align: center; position: relative; top: -210px; left: 930px; animation: spin 4s cubic-bezier(.3,.03,.34,1) infinite; font-size: 60px; padding-bottom: 15px;}
 		#but:hover{border-style: none; color: lightyellow; background-color: black;  width:200px; height: 200px; border-radius: 50%; background-size: cover; text-align: center; position: relative; top: -210px; left: 930px; animation: spin 1s linear infinite; font-size: 60px; padding-bottom: 15px;}
 		button {font-family: 'Pretendard'; font-weight: 100;}
@@ -59,11 +60,11 @@
 				<div id="title"></div>
 				<div id="contentsText"></div>
 				<div id="boxContainer">
-					<input type="text" id="a1" value="줄마다">
-					<input type="text" id="a2" value="하나씩">
-					<input type="text" id="a3" value="내용을">
-					<input type="text" id="a4" value="채워">
-					<input type="text" id="a5" value="주세요.">
+					<input type="text" id="a1" placeholder="줄마다">
+					<input type="text" id="a2" placeholder="하나씩">
+					<input type="text" id="a3" placeholder="내용을">
+					<input type="text" id="a4" placeholder="채워">
+					<input type="text" id="a5" placeholder="주세요.">
 				</div>
 				<button id="but">scan</button>
 			</div>
